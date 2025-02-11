@@ -168,7 +168,7 @@
                         <configuration>
                             <rules>
                                 <rule>
-                                    <element>PACKAGE</element>
+                                    <element>CLASS</element>
                                     <limits>
                                         <limit>
                                             <counter>CLASS</counter>
