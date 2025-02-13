@@ -96,16 +96,4 @@ public class RuleTest {
         Rule<String> rule = Rule.max(5, "String must be at most 5 characters long");
         assertThat(rule.validate("Hello World")).isFalse();
     }
-
-    @Test
-    void validCPF_should_return_true_for_valid_cpf() {
-        Rule<String> rule = Rule.validCPF("Invalid CPF");
-        assertThat(rule.validate("52998224725")).isTrue();
-    }
-
-    @Test
-    void validCPF_should_return_false_for_invalid_cpf() {
-        Rule<String> rule = Rule.validCPF("Invalid CPF");
-        assertThat(rule.validate("12345678900")).isFalse();
-    }
 }

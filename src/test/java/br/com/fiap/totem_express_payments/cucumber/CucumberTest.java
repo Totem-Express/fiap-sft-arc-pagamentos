@@ -8,7 +8,7 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 
 @Suite
 @SelectClasspathResource("features") // Feature files path relative to classpath
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "br.com.fiap.totem_express") // Step definitions package
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "br.com.fiap.totem_express_payments") // Step definitions package
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:target/cucumber-report.html") // Add plugins
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 public class CucumberTest {
