@@ -14,23 +14,6 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v4
 
-    - name: Ensure badges branch exists
-      run: |
-        if git ls-remote --exit-code --heads origin badges; then
-          echo "Branch 'badges' already exists."
-        else
-          echo "Branch 'badges' does not exist. Creating..."
-          git checkout --orphan badges
-          git commit --allow-empty -m "Initial commit for badges branch"
-          git push origin badges
-        fi
-    
-    - name: Checkout badges branch to a badges directory nested inside first checkout
-      uses: actions/checkout@v4
-      with:
-        ref: badges
-        path: badges
-
     - name: Setup Java
       uses: actions/setup-java@v4
       with:
