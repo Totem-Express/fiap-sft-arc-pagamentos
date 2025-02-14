@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: totem-express
+  name: totem-express-payments-service
   labels:
-    app: totem-express
+    app: totem-express-payments-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: totem-express
+      app: totem-express-payments-service
   template:
     metadata:
       labels:
-        app: totem-express
-    spec              :
+        app: totem-express-payments-service
+    spec:
       containers:
-        - name: totem-express
-          image: DOCKER_IMAGE
+        - name: totem-express-payments-service
+          image: #TODO: Replace with your Docker image
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
               protocol: TCP
           envFrom:
             - secretRef:
-                name: totem-express-secret
+                name: totem-express-payments-service
             - configMapRef:
-                name: totem-express-configmap
+                name: totem-express-payments-service
           resources:
             requests:
               cpu: 1000m
