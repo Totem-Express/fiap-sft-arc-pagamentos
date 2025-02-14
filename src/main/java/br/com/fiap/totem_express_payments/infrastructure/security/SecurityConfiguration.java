@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
@@ -18,10 +17,8 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
-    private final AuthenticationFilter AuthenticationFilter;
 
-    public SecurityConfiguration(br.com.fiap.totem_express.infrastructure.security.AuthenticationFilter authenticationFilter) {
-        AuthenticationFilter = authenticationFilter;
+    public SecurityConfiguration() {
     }
 
     @Bean
@@ -30,7 +27,6 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .authorizeHttpRequests(request -> request.requestMatchers("/**").permitAll())
-                .addFilterBefore(AuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
