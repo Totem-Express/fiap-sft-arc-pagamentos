@@ -1,6 +1,7 @@
 package br.com.fiap.totem_express_payments.presentation;
 
 import br.com.fiap.totem_express_payments.application.output.PaymentView;
+import br.com.fiap.totem_express_payments.domain.Payment;
 import br.com.fiap.totem_express_payments.presentation.request.PaymentWebhookRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -32,4 +33,12 @@ public interface PaymentDocumentation {
             @ApiResponse(responseCode = "500", description = "Erro interno do sistema")
     })
     ResponseEntity<Void> processPayment(@PathVariable Long id, @RequestBody @Valid PaymentWebhookRequest input);
+
+    @Operation(summary = "Consulta pagamento", description = "Retorna informações do pagamento com base no ID fornecido")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = {@Content(schema = @Schema(implementation = Payment.class), mediaType = "application/json")}),
+            @ApiResponse(responseCode = "404", description = "Pagamento não encontrado"),
+            @ApiResponse(responseCode = "500", description = "Erro interno do sistema")
+    })
+    ResponseEntity<Payment> findBy(@PathVariable String id);
 }
