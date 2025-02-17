@@ -13,4 +13,10 @@ class PaymentViewTest {
         final var view = new PaymentView.SimpleView(1L, Status.FAILED, "");
         Assertions.assertThat(view.status().toString()).isEqualTo( "FAILED");
     }
+
+    @Test
+    void should_create_full_dto(){
+        final var view = new PaymentView.FullPaymentView(null, Status.FAILED, null, null, null, null);
+        Assertions.assertThat(view.status().toString()).isEqualTo( "FAILED");
+    }
 }
