@@ -19,6 +19,7 @@ public class ProcessPaymentWebhookUseCaseImpl implements ProcessPaymentWebhookUs
                 .orElseThrow(() -> new IllegalArgumentException("Payment must exists invalid id " + paymentId));
 
         payment.processPayment(input.status());
-        gateway.create(payment);
+
+        gateway.createOrUpdate(payment);
     }
 }

@@ -30,7 +30,7 @@ public class PaymentSteps {
     @Given("a payment exists with id {long}, status {string}, and qrCode {string}")
     public void a_payment_exists_with_id_status_and_qrCode(Long id, String status, String qrCode) {
         Payment payment = new Payment(id, null, null, Status.valueOf(status), null, null, qrCode);
-        paymentGateway.create(payment);
+        paymentGateway.createOrUpdate(payment);
     }
 
     @When("I send a GET request to {string}")
@@ -50,19 +50,19 @@ public class PaymentSteps {
         assertThat(responseBody).isEqualTo(expectedBody);
     }
 
-
     @Given("no payment exists with id {long}")
     public void no_payment_exists_with_id(Long id) {
         if (paymentGateway.findById(id).isPresent()) { // Verifica se o pagamento existe
-            throw new IllegalStateException("A payment with id " + id + " already exists, but the test requires it to not exist.");
+            throw new IllegalStateException(
+                    "A payment with id " + id + " already exists, but the test requires it to not exist.");
         }
     }
 
     @When("I send a POST request to {string} with body:")
     public void i_send_a_post_request_to_with_body(String url, String body) throws Exception {
         MvcResult result = mockMvc.perform(post(url)
-                        .contentType("application/json")
-                        .content(body))
+                .contentType("application/json")
+                .content(body))
                 .andReturn();
         responseStatus = result.getResponse().getStatus();
     }
