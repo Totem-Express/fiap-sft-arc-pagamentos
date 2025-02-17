@@ -7,8 +7,7 @@ import org.junit.Test;
 
 import br.com.fiap.totem_express_payments.presentation.request.CreatePaymentRequest;
 
-public class CreatePaymentRequestTest {
-
+public class CreatePaymentInputTest {
     @Test
     public void should_create_dto_correctly() {
         final var request = new CreatePaymentRequest(BigDecimal.valueOf(1000));
