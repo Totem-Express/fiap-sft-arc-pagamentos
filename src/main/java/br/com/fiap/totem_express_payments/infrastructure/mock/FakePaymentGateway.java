@@ -16,17 +16,16 @@ public class FakePaymentGateway implements PaymentProcessorGateway {
     public PaymentProcessorResponse createPaymentQRCode(GenerateQRCodeInput input) {
         return new PaymentProcessorResponse(
                 generateQRCodeData(),
-                UUID.randomUUID().toString()
-        );
+                UUID.randomUUID().toString());
     }
 
-    private String generateQRCodeData(){
+    private String generateQRCodeData() {
         final var random = new Random();
 
         return IntStream
-            .range(0, 36)
-            .mapToObj(index -> String.valueOf(ALPHABET.charAt(random.nextInt(ALPHABET.length()))))
-            .collect(Collectors.joining(","));
+                .range(0, 36)
+                .mapToObj(index -> String.valueOf(ALPHABET.charAt(random.nextInt(ALPHABET.length()))))
+                .collect(Collectors.joining(""));
     }
 
 }

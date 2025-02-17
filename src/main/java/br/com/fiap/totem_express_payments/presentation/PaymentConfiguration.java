@@ -2,6 +2,7 @@ package br.com.fiap.totem_express_payments.presentation;
 
 import br.com.fiap.totem_express_payments.application.*;
 import br.com.fiap.totem_express_payments.application.impl.CheckPaymentStatusUseCaseImpl;
+import br.com.fiap.totem_express_payments.application.impl.CreatePaymentUseCaseImpl;
 import br.com.fiap.totem_express_payments.application.impl.ProcessPaymentWebhookUseCaseImpl;
 import br.com.fiap.totem_express_payments.infrastructure.PaymentGatewayImpl;
 import br.com.fiap.totem_express_payments.infrastructure.PaymentRepository;
@@ -22,18 +23,23 @@ public class PaymentConfiguration {
     }
 
     @Bean
-    public PaymentGateway paymentGateway() {
-        return new PaymentGatewayImpl(repository);
+    public PaymentGateway paymentGateway(PaymentProcessorGateway processor) {
+        return new PaymentGatewayImpl(repository, processor);
     }
 
     @Bean
-    public CheckPaymentStatusUseCase checkPaymentStatusUseCase() {
-        return new CheckPaymentStatusUseCaseImpl(paymentGateway());
+    public CreatePaymentUseCase createPaymentUseCase(PaymentGateway gateway) {
+        return new CreatePaymentUseCaseImpl(gateway);
     }
 
     @Bean
-    public ProcessPaymentWebhookUseCase processPaymentWebhookUseCase() {
-        return new ProcessPaymentWebhookUseCaseImpl(paymentGateway());
+    public CheckPaymentStatusUseCase checkPaymentStatusUseCase(PaymentGateway gateway) {
+        return new CheckPaymentStatusUseCaseImpl(gateway);
+    }
+
+    @Bean
+    public ProcessPaymentWebhookUseCase processPaymentWebhookUseCase(PaymentGateway gateway) {
+        return new ProcessPaymentWebhookUseCaseImpl(gateway);
     }
 
     @Bean
