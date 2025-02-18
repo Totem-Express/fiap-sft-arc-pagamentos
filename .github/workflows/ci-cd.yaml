@@ -161,6 +161,7 @@ jobs:
         IMAGE_TAG: ${{ steps.commit.outputs.short }}
       run: |
         sed -i.bak "s|DOCKER_IMAGE|${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}|g" k8s/totem-express-payments-deployment.yaml
+        kubectl apply -f k8s/totem-express-payments-configmap.yaml
         kubectl apply -f k8s/totem-express-payments-service.yaml
         kubectl apply -f k8s/totem-express-payments-secret.yaml
         kubectl apply -f k8s/totem-express-payments-deployment.yaml
