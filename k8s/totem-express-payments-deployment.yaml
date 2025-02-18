@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: totem-express-payments-service
-          image: #TODO: Replace with your Docker image
+          image: DOCKER_IMAGE
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -40,7 +40,7 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 2
             timeoutSeconds: 1
-            failureThreshold: 10
+            failureThreshold: 20
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
@@ -48,4 +48,4 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 2
             timeoutSeconds: 1
-            failureThreshold: 10
+            failureThreshold: 20
