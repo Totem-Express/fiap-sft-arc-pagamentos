@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: totem-express-payments-configmap
 data:
-  SPRING_DATASOURCE_URL: ""
+  SPRING_DATASOURCE_URL: "jdbc:mysql://totem-express-pagamentos.ct4egkeoywlc.us-east-1.rds.amazonaws.com/totemexpress?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull&useSSL=false"
