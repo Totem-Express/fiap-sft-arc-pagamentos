@@ -16,6 +16,7 @@ O Event Storm e a documentação dos eventos pivotais pode ser encontrado [no se
 
 ### Kubernetes
 
+![image](https://github.com/user-attachments/assets/72ad9ee3-a450-489e-a816-82ce26bd5a3b)
 
 Para o segundo tech-challenge optamos por utilizar o Minikube de maneira local para montar a nossa infraestrutura, os arquivos de manifesto podem ser encontrados [dentro da pasta k8s](./k8s).
 
