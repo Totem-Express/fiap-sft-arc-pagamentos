@@ -16,9 +16,9 @@ O Event Storm e a documentação dos eventos pivotais pode ser encontrado [no se
 
 ### Kubernetes
 
-![image](https://github.com/user-attachments/assets/72ad9ee3-a450-489e-a816-82ce26bd5a3b)
+![image](https://github.com/user-attachments/assets/b9a5d458-5584-4795-bf0a-b1a44fe18a08)
 
-Para o segundo tech-challenge optamos por utilizar o Minikube de maneira local para montar a nossa infraestrutura, os arquivos de manifesto podem ser encontrados [dentro da pasta k8s](./k8s).
+Para o quarto tech-challenge optamos por utilizar o Minikube de maneira local para montar a nossa infraestrutura, os arquivos de manifesto podem ser encontrados [dentro da pasta k8s](./k8s).
 
 Em relação a nossa escolha arquitetura optamos por:
 
@@ -79,7 +79,7 @@ Este pacote tem como objetivo exportar classes de utilidade (ex: validação e f
 
 ### Como utilizar?
 
-Para utilizar o "**Totem Express**" siga os seguintes comandos:
+Para utilizar o "**Totem Express Pagamentos**" siga os seguintes comandos:
 
 1) Faça o download do repositório
 
